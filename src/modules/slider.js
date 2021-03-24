@@ -3,10 +3,6 @@ const slider = () => {
         itemRelative = topSlider.querySelectorAll('.relative'),
         tables = topSlider.querySelectorAll('.table');
 
-    console.log(topSlider);
-    console.log(itemRelative);
-    console.log(tables);
-
     let currentSlide = 0; 
     tables[0].style.visibility = 'visible';
     tables[0].style.opacity = '1';
