@@ -5,8 +5,14 @@ const popup = () =>{
         body = document.querySelector('body'),
         modalClose = document.querySelector('div.modal-close img');
 
-    modalCallback.style.display = 'none';
-    overlay.style.display = 'none';
+    const close = () => {
+        modalCallback.style.display = 'none';
+        overlay.style.display = 'none';
+    };
+    const open = () => {
+        modalCallback.style.display ='block';
+        overlay.style.display = 'block';
+    };
 
     modalClose.classList.add('popupCloseBtn');
     btnCall.classList.add('btnOpen');
@@ -14,11 +20,11 @@ const popup = () =>{
     body.addEventListener('click', (event) => {
         let target = event.target;
         if(target.classList.contains('btnOpen')){
-            modalCallback.style.display ='block';
-            overlay.style.display = 'block';
+            open();
+        } else if(target.classList.contains('button-services')){
+            open();
         } else if(target.classList.contains('popupCloseBtn')){
-            modalCallback.style.display ='none';
-            overlay.style.display = 'none';
+            close();
         }
     });
 
@@ -26,8 +32,7 @@ const popup = () =>{
         let target = event.target;
             target = target.closest('#callback');
             if(!target){
-                modalCallback.style.display ='none';
-                overlay.style.display = 'none';
+                close();
             }
         });
 
