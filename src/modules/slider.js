@@ -4,9 +4,9 @@ const slider = () => {
         tables = topSlider.querySelectorAll('.table');
 
     let currentSlide = 0; 
-    tables[0].style.visibility = 'visible';
-    tables[0].style.opacity = '1';
-    itemRelative[0].style.display = 'block';
+        tables[0].style.visibility = 'visible';
+        tables[0].style.opacity = '1';
+        itemRelative[0].style.display = 'block';
 
     const prevSlide = () => {
         tables[currentSlide].style.visibility = 'hidden';
