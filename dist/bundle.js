@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ \"./src/modules/popup.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n\n\n\n // модальное окно\n\n(0,_modules_popup__WEBPACK_IMPORTED_MODULE_0__.default)(); // Слайдер\n\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__.default)();\n\n//# sourceURL=webpack://jsdiplom/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ \"./src/modules/popup.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/scroll */ \"./src/modules/scroll.js\");\n\n\n\n\n // модальное окно\n\n(0,_modules_popup__WEBPACK_IMPORTED_MODULE_0__.default)(); // Слайдер\n\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__.default)(); // Скролл\n\n(0,_modules_scroll__WEBPACK_IMPORTED_MODULE_2__.default)();\n\n//# sourceURL=webpack://jsdiplom/./src/index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar popup = function popup() {\n  var btnCall = document.querySelectorAll('div.relative a')[1],\n      modalCallback = document.getElementById('callback'),\n      overlay = document.querySelector('.modal-overlay'),\n      body = document.querySelector('body'),\n      modalClose = document.querySelector('div.modal-close img');\n\n  var close = function close() {\n    modalCallback.style.display = 'none';\n    overlay.style.display = 'none';\n  };\n\n  var open = function open() {\n    modalCallback.style.display = 'block';\n    overlay.style.display = 'block';\n  };\n\n  modalClose.classList.add('popupCloseBtn');\n  btnCall.classList.add('btnOpen');\n  body.addEventListener('click', function (event) {\n    var target = event.target;\n\n    if (target.classList.contains('btnOpen')) {\n      open();\n    } else if (target.classList.contains('button-services')) {\n      open();\n    } else if (target.classList.contains('popupCloseBtn')) {\n      close();\n    }\n  });\n  overlay.addEventListener('click', function (event) {\n    var target = event.target;\n    target = target.closest('#callback');\n\n    if (!target) {\n      close();\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (popup);\n\n//# sourceURL=webpack://jsdiplom/./src/modules/popup.js?");
+
+/***/ }),
+
+/***/ "./src/modules/scroll.js":
+/*!*******************************!*\
+  !*** ./src/modules/scroll.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar scroll = function scroll() {\n  var arrowTop = document.querySelector('.up'),\n      body = document.querySelector('body');\n  arrowTop.setAttribute('hidden', true);\n  arrowTop.addEventListener('click', function () {\n    body.scrollIntoView({\n      block: \"start\",\n      behavior: \"smooth\"\n    });\n  });\n  window.addEventListener('scroll', function () {\n    if (window.pageYOffset > 520) {\n      arrowTop.removeAttribute('hidden');\n    } else if (window.pageYOffset < 520) {\n      arrowTop.setAttribute('hidden', true);\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scroll);\n\n//# sourceURL=webpack://jsdiplom/./src/modules/scroll.js?");
 
 /***/ }),
 
