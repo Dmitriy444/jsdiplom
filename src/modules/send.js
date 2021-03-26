@@ -8,8 +8,10 @@ const send = () => {
 
     const name = document.querySelector('.form-control');
     name.id = 'surname';
+    name.setAttribute('required', true);
     const telephone = document.querySelector('.required');
     telephone.id = 'telephone';
+    telephone.setAttribute('required', true);
     statusMessage.style.cssText = `font-size: 2rem;
     color: grey;`;
 

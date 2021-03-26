@@ -5,6 +5,7 @@ import slider from './modules/slider';
 import scroll from './modules/scroll';
 import send from './modules/send';
 
+
 // модальное окно
 popup();
 // Слайдер
