@@ -5,6 +5,8 @@ import slider from './modules/slider';
 import scroll from './modules/scroll';
 import send from './modules/send';
 import accordion from './modules/accordion';
+import carousel from './modules/carousel';
+
 
 // модальное окно
 popup();
@@ -16,3 +18,5 @@ scroll();
 send();
 // Аккордеон
 accordion();
+// Карусель
+carousel();

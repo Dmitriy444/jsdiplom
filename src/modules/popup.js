@@ -23,6 +23,8 @@ const popup = () =>{
             open();
         } else if(target.classList.contains('button-services')){
             open();
+        } else if(target.classList.contains('absolute')){
+            open();
         } else if(target.classList.contains('popupCloseBtn')){
             close();
         }
