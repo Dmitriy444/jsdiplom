@@ -2,7 +2,9 @@ const carousel = () => {
     const blocks = document.querySelector('.services-elements'),
         arrows = document.querySelector('.services-arrow'),
         cards = blocks.querySelectorAll('.col-sm-6');
-    
+
+
+
     for(let i = 0; i < cards.length; i++){
         cards[i].setAttribute('id', 'card');
     }
@@ -10,7 +12,6 @@ const carousel = () => {
     cards[3].style.display = 'none';
     cards[5].style.display = 'none';
     cards[4].style.display = 'none';
-
 
     for(let i = 0; i < 3; i++){
         cards[i].id = 'first';
@@ -44,7 +45,7 @@ const carousel = () => {
             arrowLeft();
         }
     });
-    
+
 };
 
 export default carousel;

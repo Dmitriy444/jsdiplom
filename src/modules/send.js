@@ -1,10 +1,11 @@
 const send = () => {
-    const errorMessage = 'Что то пошло не так',
-        loadMessage = 'Загрузка...',
-        successMessage = 'Спасибо! Мы скоро с вами свяжемся.';
+    const errorMessage = 'Ошибка',
+        loadMessage = 'Идёт отправка',
+        successMessage = 'Отправлено';
 
     const call = document.getElementById('callback');
     const statusMessage = document.createElement('div');
+    const form = document.querySelector('.rf form[name="form-callback"]');
 
     const name = document.querySelector('.form-control');
     name.id = 'surname';
@@ -26,48 +27,46 @@ const send = () => {
     });
     
     // отправка данных
-    call.addEventListener('submit', (event) => {
-        let target = event.target;
-        if(target.matches('.modal-callback')){
-            formName = target.querySelector('.form-control');
-            formPhone = target.querySelector('.required');
-        }
-
+    call.addEventListener('submit', (event)=>{
         event.preventDefault();
-        target.append(statusMessage);
+        call.append(statusMessage);
         statusMessage.textContent = loadMessage;
         setTimeout(()=> statusMessage.remove(), 3000);
-
-        const formData = new FormData(target);
+        const formData = new FormData(form);
         let body = {};
         formData.forEach((val, key) => {
             body[key] = val;
         });
-        postData(body)
-                .then((response) => {
-                    if(response.status !== 200){
-                        throw new Error('status network not 200.');
-                    }
-                    statusMessage.textContent = successMessage;
-                })
-                .catch((error) => {
-                    statusMessage.textContent = errorMessage;
-                    console.error(error);
-                });
-
-        target.querySelector('.form-control').value = '';
-        target.querySelector('.required').value = '';
-
-    });
-    const postData = (body) => {
-        return fetch('./server.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+        postData(body, 
+            ()=>{
+                statusMessage.textContent = successMessage;
             },
-            body: JSON.stringify(body)
+            (error) => {
+                statusMessage.textContent = errorMessage;
+                console.error(error);
+            }
+        );
+
+        form.querySelector('.form-control').value = '';
+        form.querySelector('.required').value = '';
+    });
+
+    const postData = (body, outputData, errorData) => {
+        const request  = new XMLHttpRequest();
+        request.addEventListener('readystatechange', () => {
+            if(request.readyState !== 4){
+                return;
+            }
+            if(request.status === 200){
+                outputData();
+            } else {
+                errorData(request.status);
+            }
         });
-    }; 
+        request.open('POST', './server.php');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify(body));
+    };
 };
 
 export default send;

@@ -26,7 +26,7 @@ const popup = () =>{
         } else if(target.classList.contains('absolute')){
             open();
         } else if(target.classList.contains('popupCloseBtn')){
-            close();
+            close(); 
         }
     });
 
@@ -37,8 +37,6 @@ const popup = () =>{
                 close();
             }
         });
-
-
 };
 
 
